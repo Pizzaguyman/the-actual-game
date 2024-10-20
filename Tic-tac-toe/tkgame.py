@@ -12,6 +12,12 @@ or (btn1["text"]==btn4["text"]==btn7["text"]=="x") or (btn2["text"]==btn5["text"
 or (btn1["text"]==btn5["text"]==btn9["text"]=="x") or (btn3["text"]==btn5["text"]==btn7["text"]=="x"):
         res["text"] = "x won!"
         res_screen.deiconify()
+
+def draw_check():
+    if i == 9 and res["text"]==" ":
+        res["text"] = "Draw!"
+        res_screen.deiconify()
+
 def click1(event):
     global i
     if btn1["text"]==" ":
@@ -23,6 +29,7 @@ def click1(event):
             btn1["text"],btn1["fg"] = "o","#ff0000"
             move["text"],move["fg"] = "x","#0000ff"
         victory_check()
+        draw_check()
 def click2(event):
     global i
     if btn2["text"] == " ":
@@ -34,6 +41,7 @@ def click2(event):
             btn2["text"], btn2["fg"] = "o", "#ff0000"
             move["text"], move["fg"] = "x", "#0000ff"
         victory_check()
+        draw_check()
 def click3(event):
     global i
     if btn3["text"] == " ":
@@ -45,6 +53,7 @@ def click3(event):
             btn3["text"], btn3["fg"] = "o", "#ff0000"
             move["text"], move["fg"] = "x", "#0000ff"
         victory_check()
+        draw_check()
 def click4(event):
     global i
     if btn4["text"] == " ":
@@ -56,6 +65,7 @@ def click4(event):
             btn4["text"], btn4["fg"] = "o", "#ff0000"
             move["text"], move["fg"] = "x", "#0000ff"
         victory_check()
+        draw_check()
 def click5(event):
     global i
     if btn5["text"] == " ":
@@ -67,6 +77,7 @@ def click5(event):
             btn5["text"], btn5["fg"] = "o", "#ff0000"
             move["text"], move["fg"] = "x", "#0000ff"
         victory_check()
+        draw_check()
 def click6(event):
     global i
     if btn6["text"] == " ":
@@ -78,6 +89,7 @@ def click6(event):
             btn6["text"], btn6["fg"] = "o", "#ff0000"
             move["text"], move["fg"] = "x", "#0000ff"
         victory_check()
+        draw_check()
 def click7(event):
     global i
     if btn7["text"] == " ":
@@ -89,6 +101,7 @@ def click7(event):
             btn7["text"], btn7["fg"] = "o", "#ff0000"
             move["text"], move["fg"] = "x", "#0000ff"
         victory_check()
+        draw_check()
 def click8(event):
     global i
     if btn8["text"] == " ":
@@ -100,6 +113,7 @@ def click8(event):
             btn8["text"], btn8["fg"] = "o", "#ff0000"
             move["text"], move["fg"] = "x", "#0000ff"
         victory_check()
+        draw_check()
 def click9(event):
     global i
     if btn9["text"] == " ":
@@ -111,13 +125,14 @@ def click9(event):
             btn9["text"], btn9["fg"] = "o", "#ff0000"
             move["text"], move["fg"] = "x", "#0000ff"
         victory_check()
+        draw_check()
 
 root=Tk()
 root.title("Крестики и нолики")
 root.geometry("800x750")
 root.resizable(False,False)
 res_screen=Toplevel(master=root,width=800,height=250)
-res=Label(res_screen,font="Arial 50")
+res=Label(res_screen,font="Arial 50", text=" ")
 res.place(relx=0.5,anchor="center",rely=0.3)
 res_screen.title(" ")
 res_screen.withdraw()
