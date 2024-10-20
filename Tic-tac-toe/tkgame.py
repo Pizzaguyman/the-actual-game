@@ -1,17 +1,23 @@
 from tkinter import *
 from tkinter import font
 i=0
+k=0
 def victory_check():
+    global k
     if (btn1["text"]==btn2["text"]==btn3["text"]=="o")or (btn4["text"]==btn5["text"]==btn6["text"]=="o") or (btn7["text"]==btn8["text"]==btn9["text"]=="o")\
 or (btn1["text"]==btn4["text"]==btn7["text"]=="o") or (btn2["text"]==btn5["text"]==btn8["text"]=="o")or (btn3["text"]==btn6["text"]==btn9["text"]=="o")\
 or (btn1["text"]==btn5["text"]==btn9["text"]=="o") or (btn3["text"]==btn5["text"]==btn7["text"]=="o"):
-        res["text"]="o won!"
-        res_screen.deiconify()
+        if k==0:
+            res["text"]="o won!"
+            res_screen.deiconify()
+            k+=1
     if (btn1["text"]==btn2["text"]==btn3["text"]=="x")or (btn4["text"]==btn5["text"]==btn6["text"]=="x") or (btn7["text"]==btn8["text"]==btn9["text"]=="x")\
 or (btn1["text"]==btn4["text"]==btn7["text"]=="x") or (btn2["text"]==btn5["text"]==btn8["text"]=="x")or (btn3["text"]==btn6["text"]==btn9["text"]=="x")\
 or (btn1["text"]==btn5["text"]==btn9["text"]=="x") or (btn3["text"]==btn5["text"]==btn7["text"]=="x"):
-        res["text"] = "x won!"
-        res_screen.deiconify()
+        if k==0:
+            res["text"] = "x won!"
+            res_screen.deiconify()
+            k+=1
 
 def draw_check():
     if i == 9 and res["text"]==" ":
@@ -127,6 +133,16 @@ def click9(event):
         victory_check()
         draw_check()
 
+def reset():
+    global i,k
+    btn1["text"]=btn2["text"]=btn3["text"]=btn4["text"]=btn5["text"]=btn6["text"]\
+        =btn7["text"]=btn8["text"]=btn9["text"]=" "
+    move["text"], move["fg"] = "o", "#ff0000"
+    i=0
+    k=0
+    res_screen.withdraw()
+    res["text"]=" "
+
 root=Tk()
 root.title("Крестики и нолики")
 root.geometry("800x750")
@@ -153,6 +169,10 @@ btn6=Button(master=fr,width=13,height=6,text=" ",font="Arial 10")
 btn7=Button(master=fr,width=13,height=6,text=" ",font="Arial 10")
 btn8=Button(master=fr,width=13,height=6,text=" ",font="Arial 10")
 btn9=Button(master=fr,width=13,height=6,text=" ",font="Arial 10")
+restart = Button(res_screen, command=lambda:reset(),text="Play again",font="Arial 14")
+restart.place(relx=0.4,rely=0.8,anchor="s")
+exitapp = Button(res_screen, command=lambda:root.destroy(),text="Exit",font="Arial 14")
+exitapp.place(relx=0.6,rely=0.8,anchor="s")
 for x,y,btn,side,click in [0,0,btn1,"nw",click1],[0.5,0,btn2,"n",click2],[1,0,btn3,"ne",click3],[0,0.5,btn4,"w",click4],[0.5,0.5,btn5,"center",click5]\
         ,[1,0.5,btn6,"e",click6],[0,1,btn7,"sw",click7],[0.5,1,btn8,"s",click8],[1,1,btn9,"se",click9]:
     btn.place(anchor=side,relx=x,rely=y)
