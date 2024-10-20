@@ -111,6 +111,7 @@ def click9(event):
             btn9["text"], btn9["fg"] = "o", "#ff0000"
             move["text"], move["fg"] = "x", "#0000ff"
         victory_check()
+
 root=Tk()
 root.title("Крестики и нолики")
 root.geometry("800x750")
